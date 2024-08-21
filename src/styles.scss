@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/css/variables.scss";
+
+html {
+  font-family: "Poppins";
+}
+
+body {
+  background: $background;
+  font-weight: $fw-normal;
+  font-size: $fs-normal;
+  color: $secondary;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  color: $primary;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+h1 {
+  font-size: $fs-xxxl;
+  text-transform: uppercase;
+  font-weight: $fw-extra-bold;
+}
+
+h2 {
+  font-size: $fs-xxl;
+  text-transform: capitalize;
+  font-weight: $fw-extra-bold;
+}
+
+h3 {
+  font-size: $fs-xl;
+  font-weight: $fw-bold;
+  text-transform: capitalize;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify {
+  &-center {
+    justify-content: center;
+  }
+  &-end {
+    justify-content: end;
+  }
+  &-start {
+    justify-content: start;
+  }
+}
+
+.align {
+  &-center {
+    align-items: center;
+  }
+  &-end {
+    align-items: end;
+  }
+  &-start {
+    align-items: start;
+  }
+}
+
+.gap {
+  &-small {
+    gap: $gap-small;
+  }
+  &-normal {
+    gap: $gap-normal;
+  }
+  &-big {
+    gap: $gap-big;
+  }
+}
