@@ -8,9 +8,10 @@ import { ButtonComponent } from './components/button/button.component';
 import { ToastModule } from 'primeng/toast';
 import { CustomMessageService } from './services/message.service';
 import { MessageService } from 'primeng/api';
+import { UserService } from './services/user.service';
 
 const components = [InputComponent, ButtonComponent];
-const services = [CustomMessageService, MessageService];
+const services = [CustomMessageService, MessageService, UserService];
 const imports = [
   MatInputModule,
   MatFormFieldModule,

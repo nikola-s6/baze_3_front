@@ -24,14 +24,14 @@ export class CustomMessageService {
   }
   info(text: string) {
     this.messageService.add({
-      severity: 'warn',
+      severity: 'info',
       summary: 'Info',
       detail: text,
     });
   }
   success(text: string) {
     this.messageService.add({
-      severity: 'warn',
+      severity: 'success',
       summary: 'Uspeh',
       detail: text,
     });

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  ControlValueAccessor,
   FormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { CustomControlBaseComponent } from 'src/app/shared/components/custom-control-base.component';
 import { AuthService } from '../auth.service';
 import { CustomMessageService } from 'src/app/shared/services/message.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -21,7 +21,9 @@ export class SigninComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService, // private ms: MessageService
-    private ms: CustomMessageService
+    private ms: CustomMessageService,
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -42,8 +44,11 @@ export class SigninComponent implements OnInit {
     const { email, sifra } = this.form.value;
     this.authService.signin(email, sifra).subscribe({
       next: (val) => {
-        console.log(val);
-        this.ms.success('uspesno logovanje');
+        this.ms.success('Uspesno logovanje');
+        this.userService.setUser(val.data);
+        console.log(this.userService.getUser(), 'user');
+        // window.open('v1/home', '_self');
+        this.router.navigate(['/v1/home']);
       },
       error: (err) => {
         console.log(err);
