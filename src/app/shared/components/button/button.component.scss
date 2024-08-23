@@ -1,0 +1,23 @@
+@import "./../../../../assets/css/variables.scss";
+
+.button {
+  padding: 10px 14px;
+  border-radius: $radius-normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap-normal;
+  flex-direction: row;
+  outline: none;
+  border: 0;
+
+  &:hover {
+    opacity: 0.8;
+    transition: 0.3s ease-in;
+  }
+
+  &__primary {
+    color: $quaternary-medium;
+    background-color: $primary-medium;
+  }
+}

@@ -1,0 +1,31 @@
+<div class="signin__wrapper flex-row align-center justify-center">
+  <div class="signin__box">
+    <div class="card">
+      <div class="header"><div class="title">Ulogujte se</div></div>
+      <div class="body" [formGroup]="form">
+        <app-input
+          formControlName="email"
+          type="email"
+          placeholder="Unesite email"
+          title="Email"
+        ></app-input>
+        <app-input
+          formControlName="sifra"
+          type="text"
+          placeholder="Unesite sifru"
+          title="Sifra"
+        ></app-input>
+        <div class="flex-row justify-center align-center">
+          <app-button
+            type="primary"
+            title="Uloguj se"
+            [fontSize]="16"
+            (click)="handleSignIn()"
+          ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-toast></p-toast>

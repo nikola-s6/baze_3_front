@@ -1,8 +1,17 @@
 // colors
-$background: rgb(225, 215, 183, 0.5);
+$background: rgb(225, 215, 183, 0.3);
 $primary: rgb(30, 42, 94);
+$primary-medium: rgb(30, 42, 94, 0.7);
+$primary-light: rgb(30, 42, 94, 0.3);
 $secondary: rgb(85, 103, 156);
+$secondary-medium: rgb(85, 103, 156, 0.7);
+$secondary-light: rgb(85, 103, 156, 0.3);
 $tertiary: rgb(124, 147, 195);
+$tertiary-medium: rgb(124, 147, 195, 0.7);
+$tertiary-light: rgb(124, 147, 195, 0.3);
+$quaternary: rgb(225, 215, 183);
+$quaternary-medium: rgb(225, 215, 183, 0.7);
+$quaternary-light: rgb(225, 215, 183, 0.3);
 
 // font sizes
 $fs-normal: 14px;
@@ -24,3 +33,4 @@ $radius-normal: 6px;
 $gap-small: 2px;
 $gap-normal: 4px;
 $gap-big: 6px;
+$gap-extra-big: 8px;

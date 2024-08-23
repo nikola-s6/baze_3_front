@@ -1,0 +1,8 @@
+<button
+  *ngIf="title"
+  class="button button__{{ type }}"
+  [style.font-size]="fontSize + 'px'"
+  [attr.disabled]="disabled ? true : null"
+>
+  {{ title }}
+</button>

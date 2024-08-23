@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <mat-form-field class="input">
+    <mat-label *ngIf="title">{{ title }}</mat-label>
+    <input
+      matInput
+      [formControl]="control"
+      [errorStateMatcher]="matcher"
+      [type]="type"
+      [inputMode]="type === 'number' ? 'numeric' : null"
+      [(ngModel)]="value"
+      [placeholder]="placeholder"
+      [disabled]="isDisabled"
+      (change)="onValueChange($event)"
+    />
+    <mat-error *ngIf="control.hasError('required')"
+      >{{ title }} je obavezno polje!</mat-error
+    >
+    <mat-error *ngIf="control.hasError('email')"
+      >Email nije u odgovarajucem formatu</mat-error
+    >
+  </mat-form-field>
+</div>

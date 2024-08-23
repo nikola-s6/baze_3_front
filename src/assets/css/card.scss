@@ -1,0 +1,48 @@
+@import "./variables.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $quaternary;
+  border: 1px solid $primary;
+  border-radius: $radius-normal;
+  width: 100%;
+  word-wrap: break-word;
+  padding: 16px;
+  gap: 16px;
+  margin-bottom: 8px;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+
+    .title {
+      font-size: $fs-xxl;
+      font-weight: $fw-extra-bold;
+      color: $primary;
+      text-transform: uppercase;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: row;
+      gap: $gap-extra-big;
+    }
+  }
+  .body {
+    position: relative;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: $gap-extra-big;
+  }
+
+  &--disabled {
+    opacity: 0.7;
+  }
+}
