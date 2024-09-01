@@ -1,0 +1,99 @@
+<div class="list-wrapper" [formGroup]="filterForm">
+  <div class="filters">
+    <app-input
+      class="w20"
+      formControlName="referentniBroj"
+      type="number"
+      placeholder="Unesite referentni broj"
+      title="Referentni broj"
+    ></app-input>
+    <app-input
+      class="w20"
+      formControlName="nazivPoziva"
+      type="text"
+      placeholder="Unesite naziv poziva"
+      title="Naziv poziva"
+    ></app-input>
+    <app-input
+      class="w20"
+      formControlName="procenjenaVrednostOd"
+      type="number"
+      placeholder="Unesite pocetnu procenjenu vrednost"
+      title="Procenjena vrednost od"
+    ></app-input>
+    <app-input
+      class="w20"
+      formControlName="procenjenaVrednostDo"
+      type="number"
+      placeholder="Unesite krajnju procenjenu vrednost"
+      title="Procenjena vrednost do"
+    ></app-input>
+    <app-select
+      class="w20"
+      title="Izaberite privrednog subjekta"
+      formControlName="privredniSubjekt"
+      [options]="privredniSubjekti"
+    ></app-select>
+  </div>
+  <div class="filters">
+    <app-calendar
+      class="w20"
+      title="Datum izdavanja od"
+      formControlName="datumIzdavanjaOd"
+    ></app-calendar>
+    <app-calendar
+      class="w20"
+      title="Datum izdavanja do"
+      formControlName="datumIzdavanjaDo"
+    ></app-calendar>
+    <app-calendar
+      class="w20"
+      title="Datum zatvaranja od"
+      formControlName="datumZatvaranjaOd"
+    ></app-calendar>
+    <app-calendar
+      class="w20"
+      title="Datum zatvaranja do"
+      formControlName="datumZatvaranjaDo"
+    ></app-calendar>
+    <app-button
+      class="reset-button w20"
+      title="Resetuj filtere"
+      (click)="resetFilters()"
+    ></app-button>
+  </div>
+  <div class="list"></div>
+  <div class="javni-pozivi">
+    <div
+      *ngFor="let jp of javniPozivList; trackBy: trackByFn"
+      class="card pointer"
+    >
+      <div>
+        <span>Rref. broj: </span> <span>{{ jp.referentniBroj }}</span>
+      </div>
+      <div>
+        <span>Naziv: </span> <span>{{ jp.nazivPoziva }}</span>
+      </div>
+      <div>
+        <span>Oznaka: </span> <span>{{ jp.oznaka.naziv }}</span>
+      </div>
+      <div>
+        <span>Vrednost: </span>
+        <span>{{ jp.procenjenaVrednost + " " + jp.oznakaValute }}</span>
+      </div>
+      <div>
+        <span>Oglasivac: </span>
+        <span>{{ jp.zaposleni.privredniSubjekt.nazivPrivrednogSubjekta }}</span>
+      </div>
+      <div>
+        <span>Datum izdavanja: </span>
+        <span>{{ jp.datumi.datumIzdavanja | date : "dd/MM/yyyy" }}</span>
+      </div>
+      <div>
+        <span>Datum zatvaranja: </span>
+        <span>{{ jp.datumi.datumZatvaranja | date : "dd/MM/yyyy" }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast></p-toast>

@@ -1,11 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home.component';
+import { HomeComponent } from './components/home/home.component';
+import { MainComponent } from './main.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent,
+    path: '',
+    component: MainComponent,
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'javni-poziv',
+        loadChildren: () =>
+          import('../javni-poziv/javni-poziv.module').then(
+            (m) => m.JavniPozivModule
+          ),
+      },
+    ],
   },
 ];
 

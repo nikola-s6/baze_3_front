@@ -13,9 +13,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signin(email: string, sifra: string) {
-    return this.http.post<ApiResponse<Zaposleni>>(`${this.apiURL}/login`, {
-      email,
-      sifra,
-    });
+    return this.http.post<ApiResponse<Zaposleni> & { jwt: string }>(
+      `${this.apiURL}/login`,
+      {
+        email,
+        sifra,
+      }
+    );
   }
 }

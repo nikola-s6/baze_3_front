@@ -1,13 +1,7 @@
 import { Component, Input, OnInit, Optional, Self } from '@angular/core';
 import { CustomControlBaseComponent } from '../custom-control-base.component';
-import {
-  AbstractControl,
-  FormControl,
-  NgControl,
-  UntypedFormControl,
-} from '@angular/forms';
+import { AbstractControl, FormControl, NgControl } from '@angular/forms';
 import { CustomErrorStateMatcher } from '../error-matche.component';
-import { CustomMessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-input',
@@ -19,7 +13,7 @@ export class InputComponent extends CustomControlBaseComponent<
 > {
   @Input() placeholder: string;
   @Input() title: string;
-  @Input() type: 'text' | 'number' | 'email' = 'text';
+  @Input() type: 'text' | 'number' | 'email' | 'password' = 'text';
   matcher: CustomErrorStateMatcher;
 
   constructor(@Optional() @Self() public ngControl: NgControl) {
@@ -32,7 +26,6 @@ export class InputComponent extends CustomControlBaseComponent<
 
   onValueChange(event: Event) {
     const input = event.target as HTMLInputElement;
-    console.log(this.ngControl.invalid);
     this.onChage(input.value);
   }
 

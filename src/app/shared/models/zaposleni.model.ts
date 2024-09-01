@@ -1,3 +1,5 @@
+import { PrivredniSubjekt } from './privredni-subjekt';
+
 export type Zaposleni = {
   id: number;
   imeIPrezime: string;
@@ -10,4 +12,8 @@ export type Zaposleni = {
 export type ApiResponse<T> = {
   message: string;
   data: T;
+};
+
+export type ZaposleniPopulated = Omit<Zaposleni, 'maticniBroj'> & {
+  privredniSubjekt: PrivredniSubjekt;
 };

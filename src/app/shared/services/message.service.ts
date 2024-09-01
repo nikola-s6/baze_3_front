@@ -8,7 +8,6 @@ export class CustomMessageService {
   constructor(private messageService: MS) {}
 
   error(text: string) {
-    console.log(text);
     this.messageService.add({
       severity: 'error',
       summary: 'Greska',

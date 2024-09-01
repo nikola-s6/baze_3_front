@@ -9,23 +9,54 @@ import { ToastModule } from 'primeng/toast';
 import { CustomMessageService } from './services/message.service';
 import { MessageService } from 'primeng/api';
 import { UserService } from './services/user.service';
+import { HeaderComponent } from './components/header/header.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {
+  RouterLink,
+  RouterLinkActive,
+  RouterModule,
+  RouterOutlet,
+} from '@angular/router';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
+import { SharedService } from './services/shared.service';
+import { SelectComponent } from './components/select/select.component';
+import { MatSelectModule } from '@angular/material/select';
 
-const components = [InputComponent, ButtonComponent];
-const services = [CustomMessageService, MessageService, UserService];
+const components = [
+  CalendarComponent,
+  InputComponent,
+  ButtonComponent,
+  HeaderComponent,
+  SelectComponent,
+];
+const services = [
+  CustomMessageService,
+  MessageService,
+  UserService,
+  SharedService,
+];
 const imports = [
   MatInputModule,
   MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule,
   ReactiveFormsModule,
   FormsModule,
   CommonModule,
   ToastModule,
+  RouterModule,
+  RouterLink,
+  RouterOutlet,
+  RouterLinkActive,
 ];
 
 @NgModule({
   declarations: components,
   exports: [...imports, ...components],
   imports: imports,
-  providers: services,
+  providers: [...services],
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders<any> {

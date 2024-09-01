@@ -10,6 +10,7 @@
   flex-direction: row;
   outline: none;
   border: 0;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.8;
@@ -17,7 +18,12 @@
   }
 
   &__primary {
-    color: $quaternary-medium;
+    color: $quaternary;
     background-color: $primary-medium;
+  }
+
+  &__secondary {
+    color: $primary-medium;
+    background-color: $quaternary;
   }
 }

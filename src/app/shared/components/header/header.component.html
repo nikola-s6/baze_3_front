@@ -1,0 +1,17 @@
+<div class="header-wrapper">
+  <div *ngIf="zaposleni" class="zaposleni">{{ zaposleni.imeIPrezime }}</div>
+
+  <div class="options">
+    <app-button
+      class="logout"
+      [fontSize]="12"
+      title="Izloguj se"
+      type="secondary"
+      (click)="logout()"
+    ></app-button>
+    <div class="option" (click)="redirect('javni-poziv')">Javni pozivi</div>
+    <div class="option">Home</div>
+    <div class="option">Home</div>
+    <div class="option">Home</div>
+  </div>
+</div>

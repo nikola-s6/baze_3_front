@@ -1,0 +1,36 @@
+.list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .filters {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    height: fit-content;
+
+    .reset-button {
+      padding-bottom: 20px;
+    }
+
+    // .filter {
+    //   width: 200px;
+    // }
+  }
+
+  .javni-pozivi {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+}
+
+.w25 {
+  width: calc(25% - 6px);
+}
+.w20 {
+  width: calc(20% - 6px);
+}

@@ -45,7 +45,7 @@ export class SigninComponent implements OnInit {
     this.authService.signin(email, sifra).subscribe({
       next: (val) => {
         this.ms.success('Uspesno logovanje');
-        this.userService.setUser(val.data);
+        this.userService.setUser(val.data, val.jwt);
         console.log(this.userService.getUser(), 'user');
         // window.open('v1/home', '_self');
         this.router.navigate(['/v1/home']);

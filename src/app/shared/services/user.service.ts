@@ -13,12 +13,16 @@ export class UserService {
     return JSON.parse(user) as Zaposleni;
   }
 
-  setUser(user: Zaposleni) {
+  setUser(user: Zaposleni, jwt?: string) {
     localStorage.setItem('user', JSON.stringify(user));
+    if (jwt) {
+      localStorage.setItem('jwt', jwt);
+    }
   }
 
   clear() {
     localStorage.removeItem('user');
+    localStorage.removeItem('jwt');
   }
 
   isLogged() {

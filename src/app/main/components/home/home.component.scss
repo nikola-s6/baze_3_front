@@ -1,0 +1,15 @@
+@import "../../../../assets/css/variables.scss";
+
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 300px;
+
+  .title {
+    font-size: 40px;
+    color: $primary;
+  }
+}
