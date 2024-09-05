@@ -96,25 +96,25 @@ h3 {
 
 .justify {
   &-center {
-    justify-content: center;
+    justify-content: center !important;
   }
   &-end {
-    justify-content: end;
+    justify-content: end !important;
   }
   &-start {
-    justify-content: start;
+    justify-content: start !important;
   }
 }
 
 .align {
   &-center {
-    align-items: center;
+    align-items: center !important;
   }
   &-end {
-    align-items: end;
+    align-items: end !important;
   }
   &-start {
-    align-items: start;
+    align-items: start !important;
   }
 }
 

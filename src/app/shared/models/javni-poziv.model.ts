@@ -1,4 +1,10 @@
-import { Zaposleni, ZaposleniPopulated } from './zaposleni.model';
+import { Kriterijum } from './kriterijum.model';
+import { Ponuda } from './ponuda.model';
+import {
+  Zaposleni,
+  ZaposleniPopulated,
+  ZaposleniWithPrivredniFull,
+} from './zaposleni.model';
 
 export type JavniPozivFilters = {
   referentniBroj?: number;
@@ -48,3 +54,17 @@ export type GetAllJavniPozivDTO = Omit<JavniPozivPopulated, 'zaposleni'> & {
     'imeIPrezime' | 'id' | 'privredniSubjekt'
   >;
 };
+
+type JavniPozivDetalji = {
+  opis: string;
+  dodatniPodaci: string;
+  dozvoljeneVarijante: boolean;
+  adresaDostavljanja: string;
+  podlozanProduzenju: boolean;
+  obrazlozenjeProduzenja?: string;
+  osnovnaDelatnost: string;
+};
+
+export type JavniPozivDetails = Omit<GetAllJavniPozivDTO, 'zaposleni'> & {
+  zaposleni: ZaposleniWithPrivredniFull;
+} & JavniPozivDetalji & { ponude?: Ponuda[]; kriterijumi: Kriterijum[] };

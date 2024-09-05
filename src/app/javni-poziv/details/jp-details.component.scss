@@ -1,0 +1,59 @@
+.jp-page-wrapper {
+  padding: 20px;
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .javni-poziv-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+
+    .detalji {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: start;
+      justify-content: center;
+
+      .data {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: start;
+        font-size: 20px;
+      }
+    }
+    .ponude-wrapper {
+      .ponude-title {
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+      .ponude {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px 12px;
+
+        .ponuda {
+          height: 200px;
+        }
+      }
+    }
+  }
+}
+.ponuda-data-title {
+  font-weight: 600;
+}
+
+.title {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

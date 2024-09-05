@@ -22,6 +22,7 @@ import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { SharedService } from './services/shared.service';
 import { SelectComponent } from './components/select/select.component';
 import { MatSelectModule } from '@angular/material/select';
+import { BoolTransfrom } from './pipes/boolean-transform.pipe';
 
 const components = [
   CalendarComponent,
@@ -51,10 +52,11 @@ const imports = [
   RouterOutlet,
   RouterLinkActive,
 ];
+const pipes = [BoolTransfrom];
 
 @NgModule({
-  declarations: components,
-  exports: [...imports, ...components],
+  declarations: [...components, ...pipes],
+  exports: [...imports, ...components, ...pipes],
   imports: imports,
   providers: [...services],
 })

@@ -95,4 +95,8 @@ export class JavniPozivListComponent implements OnInit {
   trackByFn(index: number, jp: GetAllJavniPozivDTO): number {
     return jp.referentniBroj;
   }
+
+  redirectToJavniPoziv(jp: GetAllJavniPozivDTO) {
+    window.open(`/v1/javni-poziv/${jp.referentniBroj}`, '_self');
+  }
 }

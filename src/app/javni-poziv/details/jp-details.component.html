@@ -1,0 +1,149 @@
+<div class="jp-page-wrapper">
+  <div class="buttons">
+    <app-button
+      type="primary"
+      title="Kreiraj ponudu"
+      [fontSize]="16"
+    ></app-button>
+  </div>
+  <div *ngIf="javniPoziv" class="javni-poziv-wrapper">
+    <div class="detalji">
+      <div class="data">
+        <div class="title">Referentni broj:</div>
+        <div>{{ javniPoziv.referentniBroj }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Naziv poziva:</div>
+        <div>{{ javniPoziv.nazivPoziva }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Procenjena vrednost:</div>
+        <div>
+          {{ javniPoziv.procenjenaVrednost + " " + javniPoziv.oznakaValute }}
+        </div>
+      </div>
+      <div class="data">
+        <div class="title">Datum izdavanja:</div>
+        <div>{{ javniPoziv.datumi.datumIzdavanja | date : "dd.MM.yyyy" }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Datum zatvaranja:</div>
+        <div>{{ javniPoziv.datumi.datumZatvaranja | date : "dd.MM.yyyy" }}</div>
+      </div>
+      <div class="data align-start">
+        <div class="title">Privredni subjekt:</div>
+        <div class="detalji">
+          <div>
+            {{ javniPoziv.zaposleni.privredniSubjekt.nazivPrivrednogSubjekta }}
+          </div>
+          <div>{{ javniPoziv.zaposleni.privredniSubjekt.pib }} (pib)</div>
+          <div>
+            {{ javniPoziv.zaposleni.privredniSubjekt.maticniBroj }} (maticni
+            broj)
+          </div>
+          <div>
+            {{
+              javniPoziv.zaposleni.privredniSubjekt.adresa.ulica +
+                " " +
+                javniPoziv.zaposleni.privredniSubjekt.adresa.broj +
+                ", " +
+                javniPoziv.zaposleni.privredniSubjekt.adresa.grad.naziv +
+                ", " +
+                javniPoziv.zaposleni.privredniSubjekt.adresa.grad
+                  .postanskiBroj +
+                ", " +
+                javniPoziv.zaposleni.privredniSubjekt.adresa.grad.drzava.naziv
+            }}
+          </div>
+        </div>
+      </div>
+      <div class="data align-start">
+        <div class="title">Odgovorna osoba:</div>
+        <div class="detalji">
+          <div>{{ javniPoziv.zaposleni.imeIPrezime }}</div>
+          <div>{{ javniPoziv.zaposleni.email }}</div>
+          <div>{{ javniPoziv.zaposleni.brojTelefona }}</div>
+        </div>
+      </div>
+      <div class="data">
+        <div class="title">Opis:</div>
+        <div>{{ javniPoziv.opis }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Osnovna delatnost:</div>
+        <div>{{ javniPoziv.osnovnaDelatnost }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Dodatni podaci:</div>
+        <div>{{ javniPoziv.dodatniPodaci }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Doznoljene varijante:</div>
+        <div>{{ javniPoziv.dozvoljeneVarijante | boolTransform }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Adresa dostavljanja:</div>
+        <div>{{ javniPoziv.adresaDostavljanja }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Podlozan produzenju:</div>
+        <div>{{ javniPoziv.podlozanProduzenju | boolTransform }}</div>
+      </div>
+      <div
+        *ngIf="
+          javniPoziv.podlozanProduzenju && javniPoziv.obrazlozenjeProduzenja
+        "
+        class="data"
+      >
+        <div class="title">Obrazlozenje produzenja:</div>
+        <div>{{ javniPoziv.obrazlozenjeProduzenja }}</div>
+      </div>
+      <div class="data align-center">
+        <div class="title">Kriterijumi poziva:</div>
+        <ol *ngIf="javniPoziv.kriterijumi.length">
+          <li *ngFor="let kriterijum of javniPoziv.kriterijumi">
+            {{ kriterijum.nazivKriterijumaPoziva }}
+          </li>
+        </ol>
+        <div *ngIf="!javniPoziv.kriterijumi.length">
+          Nema dostupnih kriterijuma
+        </div>
+      </div>
+    </div>
+    <div class="ponude-wrapper">
+      <div class="title ponude-title">Ponude:</div>
+      <div *ngIf="javniPoziv.ponude?.length" class="ponude">
+        <div
+          *ngFor="let ponuda of javniPoziv.ponude"
+          class="card pointer ponuda"
+        >
+          <div>
+            <span class="ponuda-data-title">Rref. broj: </span>
+            <span>{{ ponuda.referentniBroj }}</span>
+          </div>
+          <div>
+            <span class="ponuda-data-title">Procenjena vrednost: </span>
+            <span>{{
+              ponuda.cenaSaPdv + " " + ponuda.valuta.nazivValute
+            }}</span>
+          </div>
+          <div>
+            <span class="ponuda-data-title">Datum: </span>
+            <span>{{ ponuda.datum | date : "dd.MM.yyyy" }}</span>
+          </div>
+          <div>
+            <span class="ponuda-data-title">Odgovorno lice: </span>
+            <span>{{ ponuda.zaposleni.imeIPrezime }}</span>
+          </div>
+          <div>
+            <span class="ponuda-data-title">Privredni subjekt: </span>
+            <span>{{
+              ponuda.zaposleni.privredniSubjekt.nazivPrivrednogSubjekta
+            }}</span>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!javniPoziv.ponude?.length">Nema dostupnih ponuda</div>
+    </div>
+  </div>
+</div>

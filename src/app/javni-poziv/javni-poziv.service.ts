@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import {
   GetAllJavniPozivDTO,
   JavniPoziv,
+  JavniPozivDetails,
   JavniPozivFilters,
 } from '../shared/models/javni-poziv.model';
 import { ApiResponse } from '../shared/models/zaposleni.model';
@@ -32,6 +33,12 @@ export class JavniPozivService {
     return this.http.get<ApiResponse<Array<GetAllJavniPozivDTO>>>(
       `${this.apiURL}/javni-poziv`,
       { params }
+    );
+  }
+
+  getJavniPozivDetails(referentniBroj: number) {
+    return this.http.get<ApiResponse<JavniPozivDetails>>(
+      `${this.apiURL}/javni-poziv/${referentniBroj}`
     );
   }
 }

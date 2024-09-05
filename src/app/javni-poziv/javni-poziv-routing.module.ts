@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { JavniPozivListComponent } from './list/javni-poziv-list.component';
+import { JavniPozivDetailsComponent } from './details/jp-details.component';
 
 const routes: Routes = [
   {
     path: '',
     component: JavniPozivListComponent,
-    children: [
-      {
-        path: ':javniPozivId',
-        component: JavniPozivListComponent,
-      },
-    ],
   },
+  { path: ':javniPozivId', component: JavniPozivDetailsComponent },
 ];
 
 @NgModule({
