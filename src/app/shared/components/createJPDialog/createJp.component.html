@@ -1,0 +1,103 @@
+<h1 mat-dialog-title>Kreiranje javnog poziva</h1>
+<div mat-dialog-content [formGroup]="form" class="create-body">
+  <app-input
+    formControlName="nazivPoziva"
+    type="text"
+    placeholder="Unesite naziv poziva"
+    title="Naziv poziva"
+  ></app-input>
+  <app-calendar
+    title="Datum izdavanja"
+    formControlName="datumIzdavanja"
+  ></app-calendar>
+  <app-calendar
+    title="Datum zatvaranja"
+    formControlName="datumZatvaranja"
+  ></app-calendar>
+  <app-input
+    formControlName="procenjenaVrednost"
+    type="number"
+    placeholder="Unesite procenjenu vrednsot"
+    title="Procenjena vrednost"
+  ></app-input>
+  <app-select
+    title="Izaberite oznaku"
+    formControlName="oznaka"
+    [options]="oznake"
+  ></app-select>
+  <app-select
+    title="Izaberite valutu"
+    formControlName="valuta"
+    [options]="valute"
+  ></app-select>
+  <app-input
+    formControlName="opis"
+    type="textarea"
+    placeholder="Unesite opis"
+    title="Opis"
+  ></app-input>
+  <app-input
+    formControlName="dodatniPodaci"
+    type="text"
+    placeholder="Unesite dodatne podatke"
+    title="Unesite dodatne podatke"
+  ></app-input>
+  <app-input
+    formControlName="dozvoljeneVarijante"
+    type="check"
+    title="Dozvoljene varijante"
+  ></app-input>
+  <app-input
+    formControlName="adresaDostavljanja"
+    type="text"
+    placeholder="Unesite adresu dostaljvanja ponude"
+    title="Adresa dostavljanja"
+  ></app-input>
+  <app-input
+    formControlName="podlozanProduzenju"
+    type="check"
+    title="Podlozan produzenju"
+  ></app-input>
+  <app-input
+    *ngIf="form.get('podlozanProduzenju')?.value"
+    formControlName="obrazlozenjeProduzenja"
+    type="textarea"
+    placeholder="Unesite obrazlozenje produzenja"
+    title="Obrazlozenje produzenja"
+  ></app-input>
+  <app-input
+    formControlName="osnovnaDelatnost"
+    type="text"
+    placeholder="Unesite osnovnu delatnost"
+    title="Osnovna delatnost"
+  ></app-input>
+  <div class="kriterijumi-wrapper">
+    <div class="kriterijumi-header">
+      <app-input
+        type="text"
+        placeholder="Unesite osnovnu delatnost"
+        [formControl]="kriterijumFormControl"
+        title="Osnovna delatnost"
+      ></app-input>
+      <app-button
+        type="secondary"
+        title="Dodaj kriterijum"
+        (click)="addKriterijum()"
+      ></app-button>
+    </div>
+    <ol *ngIf="kriterijumi.length">
+      <li *ngFor="let kriterijum of kriterijumi">
+        {{ kriterijum }}
+      </li>
+    </ol>
+    <div *ngIf="!kriterijumi.length">Nema kriterijuma</div>
+  </div>
+</div>
+<div class="options" mat-dialog-actions>
+  <app-button type="secondary" title="Izadji" (click)="close()"></app-button>
+  <app-button
+    type="primary"
+    title="Kreiraj javni poziv"
+    (click)="onSubmit()"
+  ></app-button>
+</div>

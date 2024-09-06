@@ -1,7 +1,8 @@
 <div class="wrapper">
-  <mat-form-field class="input">
+  <mat-form-field *ngIf="isRegular || isArea" class="input">
     <mat-label *ngIf="title">{{ title }}</mat-label>
     <input
+      *ngIf="isRegular"
       matInput
       [formControl]="control"
       [errorStateMatcher]="matcher"
@@ -12,6 +13,18 @@
       [disabled]="isDisabled"
       (change)="onValueChange($event)"
     />
+    <textarea
+      *ngIf="isArea"
+      matInput
+      [formControl]="control"
+      [errorStateMatcher]="matcher"
+      [type]="type"
+      [inputMode]="type === 'number' ? 'numeric' : null"
+      [(ngModel)]="value"
+      [placeholder]="placeholder"
+      [disabled]="isDisabled"
+      (change)="onValueChange($event)"
+    ></textarea>
     <mat-error *ngIf="control.hasError('required')"
       >{{ title }} je obavezno polje!</mat-error
     >
@@ -19,4 +32,12 @@
       >Email nije u odgovarajucem formatu</mat-error
     >
   </mat-form-field>
+  <mat-checkbox
+    *ngIf="isCheck"
+    class=""
+    [formControl]="control"
+    [checked]="!!control.value"
+  >
+    {{ title }}
+  </mat-checkbox>
 </div>

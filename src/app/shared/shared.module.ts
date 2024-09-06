@@ -23,6 +23,10 @@ import { SharedService } from './services/shared.service';
 import { SelectComponent } from './components/select/select.component';
 import { MatSelectModule } from '@angular/material/select';
 import { BoolTransfrom } from './pipes/boolean-transform.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogService } from './services/dialog.service';
+import { CreateJpComponent } from './components/createJPDialog/createJp.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const components = [
   CalendarComponent,
@@ -30,19 +34,23 @@ const components = [
   ButtonComponent,
   HeaderComponent,
   SelectComponent,
+  CreateJpComponent,
 ];
 const services = [
   CustomMessageService,
   MessageService,
   UserService,
   SharedService,
+  DialogService,
 ];
 const imports = [
+  MatCheckboxModule,
   MatInputModule,
   MatFormFieldModule,
   MatDatepickerModule,
   MatNativeDateModule,
   MatSelectModule,
+  MatDialogModule,
   ReactiveFormsModule,
   FormsModule,
   CommonModule,

@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import {
   GetAllJavniPozivDTO,
   JavniPoziv,
@@ -12,9 +12,11 @@ import {
   UntypedFormGroup,
 } from '@angular/forms';
 import { CustomMessageService } from 'src/app/shared/services/message.service';
-import { debounceTime } from 'rxjs';
+import { debounceTime, Subscription } from 'rxjs';
 import { PrivredniSubjekt } from 'src/app/shared/models/privredni-subjekt';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { DialogService } from 'src/app/shared/services/dialog.service';
+import { CreateJpComponent } from 'src/app/shared/components/createJPDialog/createJp.component';
 
 @Component({
   selector: 'app-janvni-poziv-list',
@@ -30,7 +32,8 @@ export class JavniPozivListComponent implements OnInit {
     private javniPozivService: JavniPozivService,
     private fb: FormBuilder,
     private messageService: CustomMessageService,
-    private sharedServcie: SharedService
+    private sharedServcie: SharedService,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
@@ -94,6 +97,17 @@ export class JavniPozivListComponent implements OnInit {
 
   trackByFn(index: number, jp: GetAllJavniPozivDTO): number {
     return jp.referentniBroj;
+  }
+
+  createJP() {
+    this.dialogService.openDialog(CreateJpComponent).subscribe({
+      next: (val) => {
+        this.javniPozivList.push(val);
+      },
+      error: (err) => {
+        this.messageService.error(err.error?.message ?? err);
+      },
+    });
   }
 
   redirectToJavniPoziv(jp: GetAllJavniPozivDTO) {

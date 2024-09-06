@@ -8,7 +8,7 @@ import { ApiResponse, Zaposleni } from '../shared/models/zaposleni.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiURL: string = environment.apiURL + 'auth';
+  private apiURL: string = environment.apiURL + '/auth';
 
   constructor(private http: HttpClient) {}
 

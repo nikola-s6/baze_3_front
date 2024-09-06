@@ -11,8 +11,8 @@ export type Ponuda = {
   valuta: Valuta;
   zaposleni: ZaposleniPopulated;
 };
-type Valuta = {
-  id: number;
+export type Valuta = {
+  valutaId: number;
   nazivValute: string;
   oznakaValute: string;
 };

@@ -41,4 +41,11 @@ export class JavniPozivService {
       `${this.apiURL}/javni-poziv/${referentniBroj}`
     );
   }
+
+  createJavniPoziv(data: any) {
+    return this.http.post<ApiResponse<GetAllJavniPozivDTO>>(
+      `${this.apiURL}/javni-poziv`,
+      data
+    );
+  }
 }

@@ -8,13 +8,23 @@ import { CustomErrorStateMatcher } from '../error-matche.component';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
-export class InputComponent extends CustomControlBaseComponent<
-  string | number
-> {
+export class InputComponent
+  extends CustomControlBaseComponent<string | number>
+  implements OnInit
+{
   @Input() placeholder: string;
   @Input() title: string;
-  @Input() type: 'text' | 'number' | 'email' | 'password' = 'text';
+  @Input() type:
+    | 'text'
+    | 'number'
+    | 'email'
+    | 'password'
+    | 'check'
+    | 'textarea' = 'text';
   matcher: CustomErrorStateMatcher;
+  isRegular: boolean;
+  isArea: boolean;
+  isCheck: boolean;
 
   constructor(@Optional() @Self() public ngControl: NgControl) {
     super();
@@ -22,6 +32,30 @@ export class InputComponent extends CustomControlBaseComponent<
       this.ngControl.valueAccessor = this;
     }
     this.matcher = new CustomErrorStateMatcher();
+  }
+
+  ngOnInit(): void {
+    this.checkType();
+  }
+
+  private checkType() {
+    if (['text', 'number', 'email', 'password'].includes(this.type)) {
+      this.isRegular = true;
+      this.isCheck = false;
+      this.isArea = false;
+      return;
+    }
+    if (this.type === 'check') {
+      this.isRegular = false;
+      this.isArea = false;
+      this.isCheck = true;
+      return;
+    }
+    if (this.type === 'textarea') {
+      this.isRegular = false;
+      this.isArea = true;
+      this.isCheck = false;
+    }
   }
 
   onValueChange(event: Event) {
