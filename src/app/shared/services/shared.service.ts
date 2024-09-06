@@ -5,6 +5,7 @@ import { ApiResponse } from '../models/zaposleni.model';
 import { PrivredniSubjekt } from '../models/privredni-subjekt';
 import { Oznaka } from '../models/javni-poziv.model';
 import { Valuta } from '../models/ponuda.model';
+import { JedinicaMere } from '../models/jedinica-mre.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,11 @@ export class SharedService {
 
   getAllValuta() {
     return this.http.get<ApiResponse<Valuta[]>>(`${this.apiURL}/valuta`);
+  }
+
+  getAllJedinicaMere() {
+    return this.http.get<ApiResponse<JedinicaMere[]>>(
+      `${this.apiURL}/jedinica-mere`
+    );
   }
 }

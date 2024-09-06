@@ -8,13 +8,13 @@ import { Observable, Subject, Subscription } from 'rxjs';
 })
 export class DialogService {
   private readonly dialog = inject(MatDialog);
-  private next$ = new Subject<{ error: boolean; data: any }>();
+  private next$ = new Subject<{ closed: boolean; data: any }>();
   private subscription: Subscription;
 
-  openDialog(dialog: any, data?: any): Subject<any> {
+  openDialog(dialog: any, data?: any): Subject<{ closed: boolean; data: any }> {
     this.subscription?.unsubscribe();
     const dialogRef = this.dialog.open(dialog, { data });
-    this.next$ = new Subject();
+    this.next$ = new Subject<{ closed: boolean; data: any }>();
     this.subscription = dialogRef.afterClosed().subscribe({
       next: (result) => {
         this.next$.next(result);

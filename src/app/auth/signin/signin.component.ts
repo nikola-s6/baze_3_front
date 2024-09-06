@@ -51,8 +51,7 @@ export class SigninComponent implements OnInit {
         this.router.navigate(['/v1/home']);
       },
       error: (err) => {
-        console.log(err);
-        this.ms.error(err?.error.message);
+        this.ms.error(err?.error?.message ?? err.message);
       },
     });
   }

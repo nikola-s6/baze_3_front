@@ -19,6 +19,11 @@ const routes: Routes = [
             (m) => m.JavniPozivModule
           ),
       },
+      {
+        path: 'ponuda',
+        loadChildren: () =>
+          import('../ponuda/ponuda.module').then((m) => m.PonudaModule),
+      },
     ],
   },
 ];

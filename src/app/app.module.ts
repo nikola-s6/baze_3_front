@@ -6,11 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import {
-  MAT_MOMENT_DATE_FORMATS,
-  provideMomentDateAdapter,
-} from '@angular/material-moment-adapter';
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent],

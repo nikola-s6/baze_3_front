@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>Kreiranje ponude javnog poziva</h1>
+<div mat-dialog-content [formGroup]="form" class="create-body">
+  <app-calendar title="Datum" formControlName="datum"></app-calendar>
+  <app-input
+    formControlName="ukljucujeProizvodjace"
+    type="check"
+    title="Ukljucuje proizvodjace"
+  ></app-input>
+  <app-input
+    formControlName="samostalna"
+    type="check"
+    title="Samostalna ponuda"
+  ></app-input>
+  <app-input
+    formControlName="izjavaOIntegritetu"
+    type="check"
+    title="Poseduje izjavu o integritetu"
+  ></app-input>
+  <app-input
+    formControlName="cenaBezPDV"
+    type="number"
+    placeholder="Unesite vrednost bez PDV"
+    title="Vrednost bez PDV"
+  ></app-input>
+  <app-input
+    formControlName="cenaSaPDV"
+    type="number"
+    placeholder="Unesite vrednost sa PDV"
+    title="Vrednost sa PDV"
+  ></app-input>
+  <app-select
+    title="Izaberite valutu"
+    formControlName="valutaId"
+    [options]="valute"
+  ></app-select>
+  <app-select
+    title="Javni poziv"
+    formControlName="referentniBrojJP"
+    [disabled]="true"
+    [options]="[javniPozivOption]"
+  ></app-select>
+  <div class="kriterijumi-wrapper">
+    <div
+      class="kriterijumi-header"
+      *ngFor="let kriterijumGroup of kriterijumiControls"
+      [formGroup]="kriterijumGroup"
+    >
+      <span class="w33">{{
+        kriterijumGroup.get("nazivKriterijumaPoziva")?.value ?? ""
+      }}</span>
+      <app-input
+        class="w33"
+        formControlName="vrednost"
+        type="number"
+        placeholder="Unesite vrednost kriterijuma"
+        title="Vrednost"
+      ></app-input>
+      <app-select
+        class="w33"
+        title="Jedinica mere"
+        formControlName="jedinicaMereId"
+        [options]="jediniceMere"
+      ></app-select>
+    </div>
+  </div>
+</div>
+<div class="options" mat-dialog-actions>
+  <app-button type="secondary" title="Izadji" (click)="close()"></app-button>
+  <app-button
+    type="primary"
+    title="Kreiraj javni poziv"
+    [disabled]="!form.valid"
+    (click)="onSubmit()"
+  ></app-button>
+</div>
+<p-toast></p-toast>

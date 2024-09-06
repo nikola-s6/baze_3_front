@@ -9,7 +9,6 @@ import {
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SharedService } from '../../services/shared.service';
 import { CustomMessageService } from '../../services/message.service';
-import { Oznaka } from '../../models/javni-poziv.model';
 import { JavniPozivService } from 'src/app/javni-poziv/javni-poziv.service';
 
 @Component({
@@ -85,7 +84,7 @@ export class CreateJpComponent implements OnInit {
       .createJavniPoziv({ ...this.form.value, kriterijumi: this.kriterijumi })
       .subscribe({
         next: (val) => {
-          this.dialogRef.close(val.data);
+          this.dialogRef.close({ closed: false, data: val.data });
           this.messageService.success('Javni poziv uspesno kreiran');
         },
         error: (err) => {
@@ -95,7 +94,7 @@ export class CreateJpComponent implements OnInit {
   }
 
   close() {
-    this.dialogRef.close();
+    this.dialogRef.close({ closed: true });
   }
 
   addKriterijum() {

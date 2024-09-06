@@ -29,6 +29,7 @@ export class CustomMessageService {
     });
   }
   success(text: string) {
+    console.log('usloooo');
     this.messageService.add({
       severity: 'success',
       summary: 'Uspeh',

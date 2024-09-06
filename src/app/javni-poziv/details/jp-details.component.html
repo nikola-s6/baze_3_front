@@ -3,6 +3,7 @@
     <app-button
       type="primary"
       title="Kreiraj ponudu"
+      (click)="createPonuda()"
       [fontSize]="16"
     ></app-button>
   </div>
@@ -116,6 +117,7 @@
         <div
           *ngFor="let ponuda of javniPoziv.ponude"
           class="card pointer ponuda"
+          (click)="redirectToPonudaDetails(ponuda.referentniBroj)"
         >
           <div>
             <span class="ponuda-data-title">Rref. broj: </span>

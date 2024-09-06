@@ -102,7 +102,8 @@ export class JavniPozivListComponent implements OnInit {
   createJP() {
     this.dialogService.openDialog(CreateJpComponent).subscribe({
       next: (val) => {
-        this.javniPozivList.push(val);
+        if (val.closed) return;
+        this.javniPozivList.push(val.data);
       },
       error: (err) => {
         this.messageService.error(err.error?.message ?? err);

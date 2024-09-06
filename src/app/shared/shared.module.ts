@@ -18,7 +18,7 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { SharedService } from './services/shared.service';
 import { SelectComponent } from './components/select/select.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -27,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogService } from './services/dialog.service';
 import { CreateJpComponent } from './components/createJPDialog/createJp.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CreatePonudaComponent } from './components/createPonudadialog/ceate-ponuda.component';
 
 const components = [
   CalendarComponent,
@@ -35,6 +36,7 @@ const components = [
   HeaderComponent,
   SelectComponent,
   CreateJpComponent,
+  CreatePonudaComponent,
 ];
 const services = [
   CustomMessageService,

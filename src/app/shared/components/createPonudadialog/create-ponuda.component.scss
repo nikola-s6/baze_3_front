@@ -1,0 +1,29 @@
+.create-body {
+  width: 50vw;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  gap: 8px;
+}
+
+.kriterijumi-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  .kriterijumi-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+  }
+}
+
+.w33 {
+  width: 33%;
+}
