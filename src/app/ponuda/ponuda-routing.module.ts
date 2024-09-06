@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PonudaDetailsComponent } from './ponuda-details/ponuda-details.component';
 
 const routes: Routes = [
-  { path: ':ponudaId', component: PonudaDetailsComponent },
+  { path: ':referentniBrojPonude', component: PonudaDetailsComponent },
 ];
 
 @NgModule({

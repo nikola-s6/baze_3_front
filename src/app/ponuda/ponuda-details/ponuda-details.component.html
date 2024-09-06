@@ -1,1 +1,87 @@
-nestooo <p-toast></p-toast>
+<div *ngIf="ponuda" class="ponuda-wrapper">
+  <div class="detalji">
+    <div class="data">
+      <div class="title">Referentni broj:</div>
+      <div>{{ ponuda.referentniBroj }}</div>
+    </div>
+    <div class="data">
+      <div class="title">Cena bez PDV:</div>
+      <div>{{ ponuda.cenaBezPdv }}</div>
+    </div>
+    <div class="data">
+      <div class="title">Cena sa PDV:</div>
+      <div>
+        {{ ponuda.cenaSaPdv }}
+      </div>
+    </div>
+    <div class="data">
+      <div class="title">Datum:</div>
+      <div>{{ ponuda.datum | date : "dd.MM.yyyy" }}</div>
+    </div>
+    <div class="data">
+      <div class="title">Poseduje izjavu o integritetu:</div>
+      <div>{{ ponuda.izjavaOIntegritetu | boolTransform }}</div>
+    </div>
+    <div class="data align-start">
+      <div class="title">Privredni subjekt:</div>
+      <div class="detalji">
+        <div>
+          {{ ponuda.zaposleni.privredniSubjekt.nazivPrivrednogSubjekta }}
+        </div>
+        <div>{{ ponuda.zaposleni.privredniSubjekt.pib }} (pib)</div>
+        <div>
+          {{ ponuda.zaposleni.privredniSubjekt.maticniBroj }} (maticni broj)
+        </div>
+        <div>
+          {{
+            ponuda.zaposleni.privredniSubjekt.adresa.ulica +
+              " " +
+              ponuda.zaposleni.privredniSubjekt.adresa.broj +
+              ", " +
+              ponuda.zaposleni.privredniSubjekt.adresa.grad.naziv +
+              ", " +
+              ponuda.zaposleni.privredniSubjekt.adresa.grad.postanskiBroj +
+              ", " +
+              ponuda.zaposleni.privredniSubjekt.adresa.grad.drzava.naziv
+          }}
+        </div>
+      </div>
+    </div>
+    <div class="data align-start">
+      <div class="title">Odgovorna osoba:</div>
+      <div class="detalji">
+        <div>{{ ponuda.zaposleni.imeIPrezime }}</div>
+        <div>{{ ponuda.zaposleni.email }}</div>
+        <div>{{ ponuda.zaposleni.brojTelefona }}</div>
+      </div>
+    </div>
+    <div class="data">
+      <div class="title">Samostalna:</div>
+      <div>{{ ponuda.samostalna | boolTransform }}</div>
+    </div>
+    <div class="data">
+      <div class="title">Ukljucuje proizvodjace:</div>
+      <div>{{ ponuda.ukljucujeProizvodjace | boolTransform }}</div>
+    </div>
+    <div class="data">
+      <div class="title">Valuta:</div>
+      <div>
+        {{ ponuda.valuta.nazivValute }} ({{ ponuda.valuta.oznakaValute }})
+      </div>
+    </div>
+    <div class="data align-start">
+      <div class="title">Ponude kriterijuma poziva:</div>
+      <div class="flex-column justify-center align-start">
+        <div
+          *ngFor="let ponudaKriterijuma of ponuda.ponudeKriterijuma"
+          class="data wfc"
+        >
+          <span>{{ ponudaKriterijuma.nazivKriterijumaPoziva }} -> </span>
+          <span>{{ ponudaKriterijuma.vrednost }}</span>
+          <span>{{ ponudaKriterijuma.oznakaJediniceMere }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast></p-toast>

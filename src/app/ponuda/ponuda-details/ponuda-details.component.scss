@@ -1,0 +1,44 @@
+.ponuda-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+
+  .detalji {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+    justify-content: center;
+
+    .data {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      justify-content: start;
+      font-size: 20px;
+      width: 100%;
+
+      .kriterijumi-list {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.ponuda-data-title {
+  font-weight: 600;
+}
+
+.title {
+  width: fit-content;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wfc {
+  width: fit-content !important;
+}

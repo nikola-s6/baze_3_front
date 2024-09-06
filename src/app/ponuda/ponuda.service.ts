@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Ponuda } from '../shared/models/ponuda.model';
+import { Ponuda, PonudaFull } from '../shared/models/ponuda.model';
 import { ApiResponse } from '../shared/models/zaposleni.model';
 
 @Injectable({
@@ -14,5 +14,11 @@ export class PonudaService {
 
   createPonuda(data: any) {
     return this.http.post<ApiResponse<Ponuda[]>>(`${this.apiURL}/ponuda`, data);
+  }
+
+  getPonudaDetails(referentniBroj: number) {
+    return this.http.get<ApiResponse<PonudaFull>>(
+      `${this.apiURL}/ponuda/${referentniBroj}`
+    );
   }
 }
