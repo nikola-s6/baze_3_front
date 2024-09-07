@@ -151,11 +151,18 @@
           class="card pointer ponuda"
           (click)="redirectToPonudaDetails(ponuda.referentniBroj)"
         >
-          <img
-            class="plus"
-            src="/assets/img/plus.svg"
-            (click)="createOdluka($event, ponuda)"
-          />
+          <div class="options-wrapper">
+            <img
+              class="plus"
+              src="/assets/img/plus.svg"
+              (click)="createOdluka($event, ponuda)"
+            />
+            <img
+              class="plus"
+              src="/assets/img/delete.svg"
+              (click)="deletePonuda($event, ponuda)"
+            />
+          </div>
           <div>
             <span class="ponuda-data-title">Rref. broj: </span>
             <span>{{ ponuda.referentniBroj }}</span>
@@ -186,3 +193,4 @@
     </div>
   </div>
 </div>
+<p-toast></p-toast>

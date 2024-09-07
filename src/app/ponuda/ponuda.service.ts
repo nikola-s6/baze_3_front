@@ -21,4 +21,8 @@ export class PonudaService {
       `${this.apiURL}/ponuda/${referentniBroj}`
     );
   }
+
+  deletePonuda(referentniBrojPonude: number) {
+    return this.http.delete(`${this.apiURL}/ponuda/${referentniBrojPonude}`);
+  }
 }

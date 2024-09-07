@@ -10,6 +10,7 @@ import { CreateOdlukaComponent } from 'src/app/shared/components/create-olduka/c
 import { Ponuda } from 'src/app/shared/models/ponuda.model';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { Odluka } from 'src/app/shared/models/odluka.model';
+import { PonudaService } from 'src/app/ponuda/ponuda.service';
 
 @Component({
   selector: 'app-javni-poziv-details',
@@ -25,7 +26,8 @@ export class JavniPozivDetailsComponent implements OnInit {
     private javniPozivService: JavniPozivService,
     private sharedService: SharedService,
     private messageService: CustomMessageService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private ponudaService: PonudaService
   ) {}
 
   ngOnInit(): void {
@@ -89,6 +91,23 @@ export class JavniPozivDetailsComponent implements OnInit {
           console.log(this.odluka);
         },
       });
+  }
+
+  deletePonuda(event: Event, ponuda: Ponuda) {
+    event.stopPropagation();
+
+    this.ponudaService.deletePonuda(ponuda.referentniBroj).subscribe({
+      next: (val) => {
+        this.javniPoziv.ponude = this.javniPoziv.ponude?.filter(
+          (p) => p.referentniBroj !== ponuda.referentniBroj
+        );
+        this.messageService.success('Ponuda uspesno obrisana');
+      },
+      error: (err) => {
+        console.log(err);
+        this.messageService.error(err.error?.message ?? err.message);
+      },
+    });
   }
 
   redirectToPonudaDetails(referentniBroj: number) {
