@@ -12,8 +12,12 @@
   justify-content: space-between;
   padding: 0px 50px;
 
+  position: sticky;
+  top: 0px;
+  z-index: 10000;
+
   .zaposleni {
-    cursor: none;
+    cursor: default;
   }
 
   .options {

@@ -1,5 +1,7 @@
 <div class="header-wrapper">
-  <div *ngIf="zaposleni" class="zaposleni">{{ zaposleni.imeIPrezime }}</div>
+  <div *ngIf="zaposleni" class="zaposleni" (click)="redirect('home')">
+    {{ zaposleni.imeIPrezime }}
+  </div>
 
   <div class="options">
     <app-button
@@ -9,9 +11,8 @@
       type="secondary"
       (click)="logout()"
     ></app-button>
+    <div class="option" (click)="redirect('home')">Home</div>
     <div class="option" (click)="redirect('javni-poziv')">Javni pozivi</div>
-    <div class="option">Home</div>
-    <div class="option">Home</div>
-    <div class="option">Home</div>
+    <div class="option" (click)="redirect('ugovor')">Ugovor</div>
   </div>
 </div>
