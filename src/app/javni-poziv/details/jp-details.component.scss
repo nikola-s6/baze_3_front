@@ -46,7 +46,19 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 6px 12px;
 
+        .plus {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          width: 20px;
+          height: 20px;
+          padding: 5px;
+          border-radius: 4px;
+          background-color: gray;
+        }
+
         .ponuda {
+          position: relative;
           height: fit-content;
         }
       }
@@ -61,4 +73,13 @@
   font-weight: 800;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.odluka {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: start;
+  justify-content: center;
 }

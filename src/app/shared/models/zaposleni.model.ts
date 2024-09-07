@@ -27,3 +27,10 @@ export type ZaposleniWithPrivredniFull = Omit<
 > & {
   privredniSubjekt: PrivredniSubjektPopulated;
 };
+
+export type ZaposleniBasic = {
+  zaposleniId: number;
+  imeIPrezime: string;
+  maticniBroj: number;
+  nazivPrivrednogSubjekta: number;
+};

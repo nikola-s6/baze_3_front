@@ -110,6 +110,38 @@
           Nema dostupnih kriterijuma
         </h2>
       </div>
+      <div *ngIf="odluka" class="odluka">
+        <div class="title">Odluka:</div>
+        <div class="data">
+          <div class="title">Datum donosenja odluke:</div>
+          <div>{{ odluka.datumOdluke | date : "dd.MM.yyyy" }}</div>
+        </div>
+        <div class="data">
+          <div class="title">Referentni broj ponude:</div>
+          <div>{{ odluka.referentniBrojPonude }}</div>
+        </div>
+        <div class="data align-start">
+          <div class="title">Prvi clan komisije:</div>
+          <div class="detalji">
+            <div>{{ odluka.komisijaPrviClan.imeIPrezime }}</div>
+            <div>{{ odluka.komisijaPrviClan.nazivPrivrdnogSubjekta }}</div>
+          </div>
+        </div>
+        <div class="data align-start">
+          <div class="title">Drugi clan komisije:</div>
+          <div class="detalji">
+            <div>{{ odluka.komisijaDrugiClan.imeIPrezime }}</div>
+            <div>{{ odluka.komisijaDrugiClan.nazivPrivrdnogSubjekta }}</div>
+          </div>
+        </div>
+        <div class="data align-start">
+          <div class="title">Treci clan komisije:</div>
+          <div class="detalji">
+            <div>{{ odluka.komisijaTreciClan.imeIPrezime }}</div>
+            <div>{{ odluka.komisijaTreciClan.nazivPrivrdnogSubjekta }}</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="ponude-wrapper">
       <div class="title ponude-title">Ponude:</div>
@@ -119,6 +151,11 @@
           class="card pointer ponuda"
           (click)="redirectToPonudaDetails(ponuda.referentniBroj)"
         >
+          <img
+            class="plus"
+            src="/assets/img/plus.svg"
+            (click)="createOdluka($event, ponuda)"
+          />
           <div>
             <span class="ponuda-data-title">Rref. broj: </span>
             <span>{{ ponuda.referentniBroj }}</span>

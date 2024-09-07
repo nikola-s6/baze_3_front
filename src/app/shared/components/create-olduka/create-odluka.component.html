@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Kreiranje odluke o dodeli ugovora</h1>
+<div mat-dialog-content [formGroup]="form" class="create-body">
+  <app-calendar
+    title="Datum odluke"
+    formControlName="datumOdluke"
+  ></app-calendar>
+  <app-select
+    title="Izaberite prvog clana komisije"
+    formControlName="komisijaPrviClan"
+    [options]="zaposleni"
+  ></app-select>
+  <app-select
+    title="Izaberite drugog clana komisije"
+    formControlName="komisijaDrugiClan"
+    [options]="zaposleni"
+  ></app-select>
+  <app-select
+    title="Izaberite treceg clana komisije"
+    formControlName="komisijaTreciClan"
+    [options]="zaposleni"
+  ></app-select>
+  <app-select
+    title="Izaberite ponudu"
+    formControlName="referentniBrojPonude"
+    [options]="[data.ponuda]"
+  ></app-select>
+</div>
+<div class="flex-row align-start justify-end gap-extrabig" mat-dialog-actions>
+  <app-button type="secondary" title="Izadji" (click)="close()"></app-button>
+  <app-button
+    type="primary"
+    title="Kreiraj javni poziv"
+    (click)="onSubmit()"
+  ></app-button>
+</div>
+<p-toast></p-toast>

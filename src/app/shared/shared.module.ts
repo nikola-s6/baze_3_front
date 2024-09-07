@@ -28,6 +28,7 @@ import { DialogService } from './services/dialog.service';
 import { CreateJpComponent } from './components/createJPDialog/createJp.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CreatePonudaComponent } from './components/createPonudadialog/ceate-ponuda.component';
+import { CreateOdlukaComponent } from './components/create-olduka/create-odluka.component';
 
 const components = [
   CalendarComponent,
@@ -37,6 +38,7 @@ const components = [
   SelectComponent,
   CreateJpComponent,
   CreatePonudaComponent,
+  CreateOdlukaComponent,
 ];
 const services = [
   CustomMessageService,
